@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &854760632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854760634}
+  - component: {fileID: 854760633}
+  m_Layer: 9
+  m_Name: Background Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854760634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854760632}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6700578, y: 2.4681501, z: -2.4189432}
+  m_LocalScale: {x: 0.7692308, y: 0.7692308, z: 0.7692308}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3233144661205807772}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &854760633
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854760632}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 6139099168968361151, guid: e8aa79c97fd282e4e9a7e30956026a9d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 90bda8c7cac7bbc478ea385b927f1ac0, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.363
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &15311874203525540
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791413843183333667}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Weapons
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -42,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7445744098865200997}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: WeaponRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +234,7 @@ Transform:
   - {fileID: 1633907076100626453}
   - {fileID: 3547191449518376889}
   - {fileID: 7445744098865200997}
+  - {fileID: 854760634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135,7 +264,7 @@ MonoBehaviour:
   headBonkCheck: {fileID: 3070167715129103925}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   jumpTime: 0.35
   dashPower: 20
   dashTime: 0.15
@@ -358,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3233144660763179486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3233144660969447236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +552,7 @@ GameObject:
   - component: {fileID: 3233144661210092625}
   - component: {fileID: 2678481589141152227}
   - component: {fileID: 1425937057620977026}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +614,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -373772689, guid: 201ad3149e236644bab4001d0fd34b76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -535,7 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633907076100626453}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3547191449518376889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CollisionChecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +734,7 @@ GameObject:
   - component: {fileID: 5334340077324170276}
   - component: {fileID: 288520933}
   - component: {fileID: 4085531717212250302}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -667,7 +796,7 @@ GameObject:
   - component: {fileID: 8149273789400069561}
   - component: {fileID: 2063507636653958977}
   - component: {fileID: 6700777452517133831}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Axe
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -730,7 +859,7 @@ GameObject:
   - component: {fileID: 8024005603319985781}
   - component: {fileID: 9089987974959111392}
   - component: {fileID: 2700589006436990906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +921,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2137358133, guid: 1dce235beb91b134e87ca90a74c46adb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -842,7 +971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3070167715129103925}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: headBonkCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +1005,7 @@ GameObject:
   - component: {fileID: 2948731099795452366}
   - component: {fileID: 1994583887269259369}
   - component: {fileID: 1692123424097748889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Seasonal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +1067,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1934825326, guid: acf0d5c8ef6fa014e96a71885c9e6294, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
