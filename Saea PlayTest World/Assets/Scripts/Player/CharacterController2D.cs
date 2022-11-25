@@ -95,7 +95,7 @@ public class CharacterController2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // set rb to the characters' rigidbody
         rb.gravityScale = gravityScale; // set rigidbody's gravityScale to the gravityScale variable
 
-        UI = GameObject.Find("UI").GetComponent<UI>();
+        UI = GameObject.Find("InGame").GetComponent<UI>();
     }
 
     // executed every frame

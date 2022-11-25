@@ -7,19 +7,16 @@ public class MapVariator : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
 
-    [SerializeField] private List<RandomTile> ground;
-    [SerializeField] private List<RandomTile> wallLeft;
-    [SerializeField] private List<RandomTile> wallRight;
-    [SerializeField] private List<RandomTile> ceiling;
-    [SerializeField] private List<RandomTile> platformHorizontal;
-    [SerializeField] private List<RandomTile> platformVertical;
+    private RandomTileLists listSource;
 
-    private List<List<RandomTile>> AllTiles; 
+    private List<List<RandomTile>> AllTiles;
 
     // Start is called before the first frame update
     void Start()
     {
-        AllTiles = new List<List<RandomTile>>{ground, wallLeft, wallRight, ceiling};
+        listSource = GameObject.Find("Tile Lists").GetComponent<RandomTileLists>();
+        AllTiles = listSource.GetAll();
+
         tilemap.CompressBounds();
 
         Vector3Int bottomLeft = tilemap.origin;
@@ -41,7 +38,7 @@ public class MapVariator : MonoBehaviour
                             containsTile = true;
                         }
                     }
-                    if (containsTile == true/*tilemap.GetTile(tile) == tiles[0].tile*/)
+                    if (containsTile == true)
                     {
                         tilemap.SetTile(tile, RandomTile(tiles));
                     }

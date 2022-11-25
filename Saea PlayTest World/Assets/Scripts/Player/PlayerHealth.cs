@@ -32,9 +32,13 @@ public class PlayerHealth : MonoBehaviour
             CheckHealth();
             if (currentHealth != maxHealth)
             {
-                onHit?.Invoke(senderPosition);
+                
                 StartCoroutine(Invulnerability());
             }
+        }
+        if (currentHealth != maxHealth)
+        {
+            onHit?.Invoke(senderPosition);
         }
     }
 

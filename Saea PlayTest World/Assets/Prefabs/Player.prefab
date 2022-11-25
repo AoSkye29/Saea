@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854760634}
   - component: {fileID: 854760633}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Background Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791413843183333667}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Weapons
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7445744098865200997}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: WeaponRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3233144660763179486}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: wallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3233144660969447236}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 3233144661210092625}
   - component: {fileID: 2678481589141152227}
   - component: {fileID: 1425937057620977026}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633907076100626453}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3547191449518376889}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: CollisionChecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 5334340077324170276}
   - component: {fileID: 288520933}
   - component: {fileID: 4085531717212250302}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Sword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 8149273789400069561}
   - component: {fileID: 2063507636653958977}
   - component: {fileID: 6700777452517133831}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Axe
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 8024005603319985781}
   - component: {fileID: 9089987974959111392}
   - component: {fileID: 2700589006436990906}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -971,7 +971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3070167715129103925}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: headBonkCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 2948731099795452366}
   - component: {fileID: 1994583887269259369}
   - component: {fileID: 1692123424097748889}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Seasonal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,7 +17,7 @@ public class AnimationManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float velocity = Input.GetAxisRaw("Horizontal");
         if (velocity != 0)
