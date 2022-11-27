@@ -38,6 +38,9 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             StopAllCoroutines();
+            Rigidbody2D rb = transform.GetComponent<Rigidbody2D>();
+            rb.velocity = Vector3.zero;
+            rb.gravityScale = 0;
             transform.GetComponent<EnemyAI>().enabled = false;
             transform.GetComponent<EnemyAttack>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
