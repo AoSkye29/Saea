@@ -16,8 +16,8 @@ public class CharacterController2D : MonoBehaviour
 
     // movement values/ power
     [Header("Movement values/ power")]
-    public float speed = 10f; // how fast the character moves
-    public float jumpForce = 10f; // how high the character can jump
+    [SerializeField] private float speed = 10f; // how fast the character moves
+    [SerializeField] private float jumpForce = 10f; // how high the character can jump
     public bool canMove = true; // whether the player currently has control over their characters' movement
 
     // flip character model (private)
@@ -29,36 +29,43 @@ public class CharacterController2D : MonoBehaviour
     // check if character is on the ground or in the air
     [Header("Collision checks")]
     // ground collision
-    public Transform groundCheck; // rectangle to check ground collision
+    [SerializeField] private Transform groundCheck; // rectangle to check ground collision
     [SerializeField] private Vector3 groundCheckSize; // size of groundCheck rectangle
     private bool isGrounded = false; // whether the character is on the ground
     // wall collision
-    public Transform wallCheck; // rectangle to check wall collision
+    [SerializeField] private Transform wallCheck; // rectangle to check wall collision
     [SerializeField] private Vector3 wallCheckSize; // size of wallCheck rectangle
     private bool isWallDetected = false; // whether the character is moving against a wall
+    [SerializeField] private Transform wallCheckTop;
+    [SerializeField] private Transform wallCheckBottom;
+    [SerializeField] private Vector3 extraWallCheckSize;
+    private bool isWallDetectedTop;
+    private bool isWallDetectedBottom;
+    private bool isWallDetectedTotal;
+
     // ceiling collision
-    public Transform headBonkCheck;
+    [SerializeField] private Transform headBonkCheck;
     private bool headBonk = false;
     
-    public LayerMask whatIsGround; // which layers count as ground
+    [SerializeField] private LayerMask whatIsGround; // which layers count as ground
 
     // (high) jumping
     [Header("How long the player can hold jump")]
-    public float jumpTime = 0.35f; // how long the character can increase the jump height
+    [SerializeField] private float jumpTime = 0.35f; // how long the character can increase the jump height
     private float jumpTimeCounter; // how long the character has been jumping
     private bool isJumping; // whether the character is jumping
 
     // dashing
     [Header("Values for dashing")]
-    public float dashPower = 20f; // how fast the character can go while dashing
-    public float dashTime = 0.2f; // how long the dash lasts
+    [SerializeField] private float dashPower = 20f; // how fast the character can go while dashing
+    [SerializeField] private float dashTime = 0.2f; // how long the dash lasts
     private bool canDash = false; // whether the character can currently use the dash ability
-    public float groundDashGravity = 15; // the gravity setting while ground dashing
-    public bool isDashing = false; // whether the character is dashing
+    [SerializeField] private float groundDashGravity = 15; // the gravity setting while ground dashing
+    [SerializeField] private bool isDashing = false; // whether the character is dashing
 
     // double jumping
     [Header("Amount of double jumps")]
-    public int maxExtraJumps = 1; // max amount of extra jumps the character has
+    [SerializeField] private int maxExtraJumps = 1; // max amount of extra jumps the character has
     private int extraJumps; // how many extra jumps the character currently has
 
     // wall slide
@@ -158,11 +165,22 @@ public class CharacterController2D : MonoBehaviour
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, whatIsGround); // check for ground collision
 
         isWallDetected = Physics2D.OverlapBox(wallCheck.position, wallCheckSize, 0f, whatIsGround); // check for wall collision
+        isWallDetectedTop = Physics2D.OverlapBox(wallCheckTop.position, extraWallCheckSize, 0f, whatIsGround);
+        isWallDetectedBottom = Physics2D.OverlapBox(wallCheckBottom.position, extraWallCheckSize, 0f, whatIsGround);
 
         headBonk = Physics2D.OverlapBox(headBonkCheck.position, groundCheckSize, 0f, whatIsGround); // check for ceiling collision
 
+        if (isWallDetected == true && isWallDetectedTop == true && isWallDetectedBottom == true)
+        {
+            isWallDetectedTotal = true;
+        }
+        else
+        {
+            isWallDetectedTotal = false;
+        }
+
         // cancel wall slide if no more wall detected
-        if (isWallDetected == false)
+        if (isWallDetectedTotal == false)
         {
             isWallSliding = false;
         }
@@ -186,7 +204,7 @@ public class CharacterController2D : MonoBehaviour
         if (canMove == true)
         {
             // start wall slide when character is next to wall and not moving upwards
-            if (isWallDetected == true && canWallSlide == true && rb.velocity.y <= 0)
+            if (isWallDetectedTotal == true && canWallSlide == true && rb.velocity.y <= 0)
             {
                 WallSlide();
             }
@@ -411,6 +429,9 @@ public class CharacterController2D : MonoBehaviour
 
         Gizmos.color = Color.red; // sets gizmo color for all following gizmos
 
+        Gizmos.DrawCube(wallCheckTop.position, extraWallCheckSize);
+        Gizmos.DrawCube(wallCheckBottom.position, extraWallCheckSize);
+
         Vector2 wallJumpRay = new Vector2(wallJumpDirection.x * 0.03f * -facingDirection, wallJumpDirection.y * 0.03f); // direction of wall jump ray
         Gizmos.DrawRay(transform.position, wallJumpRay); // show wall jump direction
     }
@@ -422,22 +443,23 @@ public class CharacterController2D : MonoBehaviour
             case 0:
                 unlockAirDash = true;
                 UI.EnableAirDash();
-                BroadcastMessage("Winter");
+                // BroadcastMessage("Winter");
                 break;
             case 1:
                 unlockDoubleJump = true;
                 UI.EnableDoubleJump();
-                BroadcastMessage("Spring");
+                // BroadcastMessage("Spring");
                 break;
             case 2:
                 unlockWallSlide = true;
                 UI.EnableWallSlide();
-                BroadcastMessage("Summer");
+                BroadcastMessage("UnlockWallSlide");
+                // BroadcastMessage("Summer");
                 break;
             case 3:
                 unlockWallJump = true;
                 UI.EnableWallJump();
-                BroadcastMessage("Autumn");
+                // BroadcastMessage("Autumn");
                 break;
             case 4:
                 BroadcastMessage("UnlockAxe");

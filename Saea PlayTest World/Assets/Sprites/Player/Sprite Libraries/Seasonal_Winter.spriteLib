@@ -91,4 +91,30 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 1663223836, guid: 4c5653d73baf97a4e93740a9acd5fa4e, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 4
+  - m_Name: Wall Slide
+    m_Hash: 1252573320
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Entry
+      m_Hash: -354373004
+      m_Sprite: {fileID: -2047687670, guid: 201ad3149e236644bab4001d0fd34b76, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1451801518, guid: 4c5653d73baf97a4e93740a9acd5fa4e, type: 3}
+    - m_Name: Entry_0
+      m_Hash: 874506106
+      m_Sprite: {fileID: -981465876, guid: 201ad3149e236644bab4001d0fd34b76, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 912781039, guid: 4c5653d73baf97a4e93740a9acd5fa4e, type: 3}
+    - m_Name: Entry_1
+      m_Hash: 1125701612
+      m_Sprite: {fileID: -293093590, guid: 201ad3149e236644bab4001d0fd34b76, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1587854104, guid: 4c5653d73baf97a4e93740a9acd5fa4e, type: 3}
+    - m_Name: Entry_2
+      m_Hash: -636385706
+      m_Sprite: {fileID: -1095378389, guid: 201ad3149e236644bab4001d0fd34b76, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1389854069, guid: 4c5653d73baf97a4e93740a9acd5fa4e, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
   m_PrimaryLibraryGUID: 809f86701da2fb04e9856134c985eeae
