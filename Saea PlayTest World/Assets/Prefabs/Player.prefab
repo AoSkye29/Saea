@@ -308,7 +308,7 @@ MonoBehaviour:
   isDashing: 0
   maxExtraJumps: 1
   wallSlideSpeedMultiplier: 0.1
-  fastWallSlideSpeedMultiplier: 0.95
+  fastWallSlideSpeedMultiplier: 0.2
   wallJumpDirection: {x: 10, y: 16.4}
   gravityScale: 5
 --- !u!50 &3233144660377819647
