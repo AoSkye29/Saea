@@ -13,6 +13,10 @@ public class BossEnemyHealth : MonoBehaviour
 
     [SerializeField] private UnityEvent<Vector3> onHit;
 
+    [SerializeField] private Transform corruptedGoldleaf;
+    [SerializeField] private int minGoldleafDropped;
+    [SerializeField] private int maxGoldleafDropped;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -43,10 +47,14 @@ public class BossEnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            //StopAllCoroutines();
+            StopAllCoroutines();
             transform.GetComponent<BossEnemyAI>().enabled = false;
             transform.GetComponent<EnemyAttack>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
+            for(int i = 1; i <= Random.Range(minGoldleafDropped, maxGoldleafDropped + 1); i++)
+            {
+                Instantiate(corruptedGoldleaf, transform.position, Quaternion.identity);
+            }
         }
     }
 

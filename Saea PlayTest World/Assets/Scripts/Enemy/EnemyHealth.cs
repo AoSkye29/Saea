@@ -12,6 +12,10 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] private UnityEvent<Vector3> onHit;
 
+    [SerializeField] private Transform corruptedGoldleaf;
+    [SerializeField] private int minGoldleafDropped;
+    [SerializeField] private int maxGoldleafDropped;
+
     public void TakeDamage(float damage, Vector3 senderPosition)
     {
         if (invincible == false)
@@ -44,6 +48,10 @@ public class EnemyHealth : MonoBehaviour
             transform.GetComponent<EnemyAI>().enabled = false;
             transform.GetComponent<EnemyAttack>().enabled = false;
             GetComponent<Animator>().SetTrigger("Death");
+            for(int i = 1; i <= Random.Range(minGoldleafDropped, maxGoldleafDropped + 1); i++)
+            {
+                Instantiate(corruptedGoldleaf, transform.position, Quaternion.identity);
+            }
         }
     }
 

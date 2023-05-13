@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour
             if (pickedUp == false)
             {
                 GetComponent<Animator>().SetBool("Collision", true);
-                player.GetComponent<CharacterController2D>().Pickup(id);
+                player.GetComponent<PickupHandler>().Pickup(id);
                 pickedUp = true;
             }
         }

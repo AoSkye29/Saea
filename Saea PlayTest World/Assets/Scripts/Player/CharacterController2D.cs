@@ -88,6 +88,8 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 5f; // how strong the gravity affecting the rigidbody is
     private Rigidbody2D rb; // the characters' rigidbody
 
+    [SerializeField] private Transform Anvils;
+
     // executed once before start
     private void Awake()
     {
@@ -235,6 +237,26 @@ public class CharacterController2D : MonoBehaviour
             {
                 transform.GetComponent<PlayerAttack>().Attack();
             }
+
+            if (controls.Gameplay.Interact.WasPressedThisFrame() && isGrounded == true)
+            {
+                if (GetComponent<BoxCollider2D>().IsTouchingLayers(2048)) // 2048 = 2^layer number
+                {
+                    // when colliding with an anvil
+                    foreach (Transform Anvil in Anvils)
+                    {
+                        if (GetComponent<BoxCollider2D>().IsTouching(Anvil.GetComponent<BoxCollider2D>()))
+                        {
+                            Anvil.GetComponent<Anvil>().ConvertMoney();
+                        }
+                    }
+                }
+                else
+                {
+                    // if not colliding with any anvils
+                }
+                //if (GetComponent<BoxCollider2D>().OverlapCollider())
+            }
         }
     }
 
@@ -297,13 +319,6 @@ public class CharacterController2D : MonoBehaviour
             Scaler.x *= -1;
             transform.localScale = Scaler;
         }
-        /*else if (((facingRight == false && moveInput < 0 && isWallSliding == true && wallSlideFlip == false) || (facingRight == true && moveInput > 0 && isWallSliding == true && wallSlideFlip == false) || (isWallSliding == false && wallSlideFlip == true)) && unlockWallSlide == true && isGrounded == false)
-        {
-            wallSlideFlip = !wallSlideFlip;
-            Vector3 Scaler = transform.Find("PlayerSprite").localScale;
-            Scaler.x *= -1;
-            transform.Find("PlayerSprite").localScale = Scaler;
-        }*/
     }
 
     // handles jump inputs
@@ -396,7 +411,7 @@ public class CharacterController2D : MonoBehaviour
         if (unlockAirDash == false) rb.gravityScale = groundDashGravity; // heightens gravity
         rb.velocity = new Vector2(transform.localScale.x * dashPower, 0f);
         yield return new WaitForSeconds(dashTime);
-        if (unlockAirDash == false) rb.gravityScale = gravityScale; // reset gravityScale back to original values
+        rb.gravityScale = gravityScale; // reset gravityScale back to original values
         isDashing = false;
     }
 
@@ -436,7 +451,27 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.DrawRay(transform.position, wallJumpRay); // show wall jump direction
     }
 
-    public void Pickup(int id)
+    private void UnlockAirDash()
+    {
+        unlockAirDash = true;
+    }
+
+    private void UnlockDoubleJump()
+    {
+        unlockDoubleJump = true;
+    }
+
+    private void UnlockWallSlide()
+    {
+        unlockWallSlide = true;
+    }
+
+    private void UnlockWallJump()
+    {
+        unlockWallJump = true;
+    }
+
+    /*public void Pickup(int id)
     {
         switch(id)
         {
@@ -472,5 +507,5 @@ public class CharacterController2D : MonoBehaviour
                 BroadcastMessage("Heal", 1);
                 break;
         }
-    }
+    }*/
 }

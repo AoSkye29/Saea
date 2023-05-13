@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d05ce71d-9cf9-4481-aaed-28cad42f333b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -194,6 +203,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""SwapWeaponL"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be9c4512-8d0e-4019-9c68-eaadde952d59"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +227,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_SwapWeaponR = m_Gameplay.FindAction("SwapWeaponR", throwIfNotFound: true);
         m_Gameplay_SwapWeaponL = m_Gameplay.FindAction("SwapWeaponL", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_SwapWeaponR;
     private readonly InputAction m_Gameplay_SwapWeaponL;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -280,6 +302,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @SwapWeaponR => m_Wrapper.m_Gameplay_SwapWeaponR;
         public InputAction @SwapWeaponL => m_Wrapper.m_Gameplay_SwapWeaponL;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,6 +327,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SwapWeaponL.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwapWeaponL;
                 @SwapWeaponL.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwapWeaponL;
                 @SwapWeaponL.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwapWeaponL;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -323,6 +349,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SwapWeaponL.started += instance.OnSwapWeaponL;
                 @SwapWeaponL.performed += instance.OnSwapWeaponL;
                 @SwapWeaponL.canceled += instance.OnSwapWeaponL;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -334,5 +363,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnSwapWeaponR(InputAction.CallbackContext context);
         void OnSwapWeaponL(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
