@@ -233,11 +233,13 @@ public class CharacterController2D : MonoBehaviour
                 Dash();
             }
 
+            // start attack when player inputs attack button
             if (controls.Gameplay.Attack.WasPressedThisFrame())
             {
                 transform.GetComponent<PlayerAttack>().Attack();
             }
 
+            // start interact when player inputs interact button
             if (controls.Gameplay.Interact.WasPressedThisFrame() && isGrounded == true)
             {
                 if (GetComponent<BoxCollider2D>().IsTouchingLayers(2048)) // 2048 = 2^layer number
